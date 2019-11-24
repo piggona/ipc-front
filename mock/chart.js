@@ -218,7 +218,7 @@ function patent(method, param) {
           points: [
             {
               name: "LG",
-              uuid: "LG",
+              uuid: "LG-001",
               total_count: 100,
               latest_count: 55
             },

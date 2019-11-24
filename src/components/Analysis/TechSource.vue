@@ -54,6 +54,12 @@ export default {
 </script>
 
 <style>
+.ant-row {
+  width: 100%;
+}
+.subtitle {
+  height: 42px;
+}
 /* #wrap {
   display: flex;
   justify-content: space-around;

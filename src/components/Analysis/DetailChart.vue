@@ -25,18 +25,23 @@
           <!--搜索器选择项结束-->
           <!-- </div> -->
           <!-- </div> -->
-          <SimpleChart :ChartTitle="ChartTitle" :ChartStyle="ChartStyle" :option="option" />
+          <SimpleChart
+            :ChartTitle="ChartTitle"
+            :ChartStyle="ChartStyle"
+            :option="option"
+            :link="link"
+          />
         </a-col>
         <a-col :span="6">
           <div class="tab-side">
             <div class="tab-up">
               <div class="tab-title">{{'领军'+opName}}</div>
-              <a class="tab-person">{{ most.name }}</a>
+              <a class="tab-person" :href="link+most.uuid">{{ most.name }}</a>
             </div>
             <hr />
             <div class="tab-down">
               <div class="tab-title">{{'新兴'+opName}}</div>
-              <a class="tab-person">{{ newer.name }}</a>
+              <a class="tab-person" :href="link+newer.uuid">{{ newer.name }}</a>
             </div>
           </div>
         </a-col>
@@ -64,6 +69,9 @@ export default {
       default: () => {}
     },
     opName: {
+      type: String
+    },
+    link: {
       type: String
     }
   },

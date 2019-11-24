@@ -30,6 +30,7 @@
         :ChartStyle="AssigneeScatterStyle"
         :option="AssigneeScatterOption"
         :opName="'企业'"
+        :link="baseUrl+'documents/static/#/analysis/assignee?assignee='"
       />
       <!-- :most="AssigneeScatterOptionMost" -->
       <!-- :newer="AssigneeScatterOptionNewer" -->
@@ -38,6 +39,7 @@
         :ChartStyle="InventorScatterStyle"
         :option="InventorScatterOption"
         :opName="'发明人'"
+        :link="baseUrl+'documents/static/#/analysis/patent?patent_uuid='"
       />
       <!-- :most="InventorScatterOptionMost"
       :newer="InventorScatterOptionNewer"-->
@@ -62,6 +64,7 @@ export default {
 
       AssigneeScatterTitle: "机构实力分析",
       AssigneeScatterStyle: "width:100%;height:400px;align-content:center;",
+      baseUrl: process.env.VUE_APP_BASE_JUMP,
 
       InventorScatterTitle: "发明人实力分析",
       InventorScatterStyle: "width:100%;height:400px;align-content:center;",
@@ -173,6 +176,7 @@ export default {
   display: flex;
   justify-content: space-between;
   position: relative;
+  width: 100%;
 }
 .most-cited-patents {
   margin-top: 2rem;
