@@ -1,7 +1,10 @@
 export const SEARCH = {
   GET_IPC_TREE: "getIpcTree",
   GET_SEARCH_RESULT: "getSearchResult",
-  GET_FUND_RESULT: "getFundResult"
+  GET_SEARCH_TREE: "getSearchTree",
+  GET_FUND_RESULT: "getFundResult",
+  INIT_STATUS: "initStatus",
+  DELETE_TASK: "deleteTask"
 };
 
 export const PATENT = {
