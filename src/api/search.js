@@ -115,5 +115,35 @@ export default {
       }
       cb(res);
     });
+  },
+  getSearchTree(cb, errorCb, search_data) {
+    request({
+      url: "ipd/chart/patent/search/" + search_data,
+      method: "get"
+    }).then(response => {
+      let res = response.data;
+      if (res && "data" in res && res["data"] && res["data"].length > 0) {
+        let res_len = res["data"].length;
+        for (let i = 0; i < res_len; i++) {
+          res["data"][i].ipc_id = res["data"][i].ipc.replace(/\s/g, "_");
+          let t_len = res["data"][i].des.length;
+          for (let j = 0; j < t_len; j++) {
+            res["data"][i].des[j].index = encodeURIComponent(
+              res["data"][i].des[j].index
+            );
+          }
+        }
+        cb(res.data);
+      } else {
+        errorCb(res);
+      }
+    });
+    // setTimeout(() => {
+    //   console.log(search_data);
+    //   _searchNode.map(x => {
+    //     x.ipc = "ipc description" + String(random(100));
+    //   });
+    //   Math.random() > 0.5 ? cb(_searchNode) : errorCb();
+    // }, 1000);
   }
 };

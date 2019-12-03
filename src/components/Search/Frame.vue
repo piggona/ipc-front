@@ -19,6 +19,7 @@
         </div>
         <p v-if="searching" style="font-size: 0.5rem">努力搜索中......</p>
         <p v-if="noResult" class="main-class-phrase">后台正在生成分析报告，请10-20分钟后再次搜索</p>
+        <SearchResult :tasks="tasks" />
         <div v-if="!noResult" class="list-body" id="list-body-parent">
           <div v-for="node in searchNodes" :key="node.depth">
             <SearchTree :ipc_id="node.ipc_id" :ipc="node.ipc" :depth="node.depth" :des="node.des" />
@@ -85,6 +86,7 @@
 import HotTree from "./RecursiveTree";
 import SearchTree from "./SearchTree";
 import FundResult from "./FundResult";
+import SearchResult from "./SearchResult";
 import { mapState } from "vuex";
 export default {
   data() {
@@ -141,7 +143,8 @@ export default {
     ...mapState({
       treeNodes: state => state.search.treeNodes,
       searchNodes: state => state.search.searchNodes,
-      fund: state => state.search.fund
+      fund: state => state.search.fund,
+      tasks: state => state.search.status
     })
   },
   watch: {
@@ -182,7 +185,8 @@ export default {
   components: {
     HotTree,
     SearchTree,
-    FundResult
+    FundResult,
+    SearchResult
   }
 };
 </script>

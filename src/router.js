@@ -19,6 +19,12 @@ const router = new Router({
           name: "searchPage",
           component: () =>
             import(/* webpackChunkName: "ipc" */ "./views/Search/Basic")
+        },
+        {
+          path: "/search/detail",
+          name: "searchDetail",
+          component: () =>
+            import(/* webpackChunkName: "ipc" */ "./views/Search/Detail")
         }
       ]
     },
