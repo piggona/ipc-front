@@ -118,7 +118,7 @@ export default {
   },
   getSearchTree(cb, errorCb, search_data) {
     request({
-      url: "ipd/chart/patent/search/" + search_data,
+      url: "ipd/chart/patent/searchdetail/" + search_data,
       method: "get"
     }).then(response => {
       let res = response.data;
@@ -145,5 +145,14 @@ export default {
     //   });
     //   Math.random() > 0.5 ? cb(_searchNode) : errorCb();
     // }, 1000);
+  },
+  refreshStatus(cb) {
+    request({
+      url: "ipd/chart/patent/showtask/",
+      method: "get"
+    }).then(response => {
+      let res = response.data;
+      cb(res.data);
+    });
   }
 };

@@ -3,7 +3,7 @@
     <a-card title="搜索结果">
       <!-- <p v-if="noResult" class="main-class-phrase">努力搜索中......</p> -->
       <div v-if="!noResult" class="list-body" id="list-body-parent">
-        {{searchTree}}
+        <!-- {{searchTree}} -->
         <div v-for="node in searchTree" :key="node.depth">
           <SearchTree :ipc_id="node.ipc_id" :ipc="node.ipc" :depth="node.depth" :des="node.des" />
         </div>
@@ -38,7 +38,6 @@ export default {
     searchTree: {
       handler(val) {
         console.log("handler:", val);
-
         // this.searching = false;
         // if (val === "fail") {
         //   this.noResult = true;

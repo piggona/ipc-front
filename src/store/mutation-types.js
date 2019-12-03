@@ -4,7 +4,8 @@ export const SEARCH = {
   GET_SEARCH_TREE: "getSearchTree",
   GET_FUND_RESULT: "getFundResult",
   INIT_STATUS: "initStatus",
-  DELETE_TASK: "deleteTask"
+  DELETE_TASK: "deleteTask",
+  REFRESH_STATUS: "refreshStatus"
 };
 
 export const PATENT = {

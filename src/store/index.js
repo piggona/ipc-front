@@ -15,6 +15,7 @@ export default new Vuex.Store({
   mutations: {
     getUsername() {
       var ca = document.cookie.split(";");
+      console.log("getUsername:", ca);
       for (var i = 0; i < ca.length; i++) {
         var c = ca[i].trim();
         if (c.indexOf("patent_username=") == 0)

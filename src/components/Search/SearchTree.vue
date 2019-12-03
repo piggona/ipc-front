@@ -13,7 +13,10 @@
         >
           <v-icon :name="tVal" scale="1.5" />
         </button>
-        <div :class="depth+'-class-title'" style="display: inline">{{ipc}}</div>
+        <div
+          :class="depth+'-class-title'"
+          style="display: inline; color: rgb(176, 58, 46); font-weight: bold;"
+        >{{ipc}}</div>
         <div v-if="showChildren" class="panel-collapse collapse" :id="'main-class-body-'+ipc_id">
           <div v-for="de in des" :key="de.index">
             <router-link

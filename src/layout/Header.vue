@@ -20,10 +20,10 @@
       <!--网页顶栏-->
       <div class="nav-simple">
         <div class="w">
-          <a class="logo" href="patent.html">
-            技术热点分析
+          <router-link class="logo" :to="'/'">
+            科技文献检索分析
             <div class="logo-sec">Vanlink</div>
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
@@ -37,7 +37,10 @@ export default {
   computed: mapState({
     username: state => state.userInfo.username
   }),
-  beforeCreate: () => {
+  // beforeCreate: () => {
+  //   this.$store.commit("getUsername");
+  // },
+  mounted() {
     this.$store.commit("getUsername");
   }
 };

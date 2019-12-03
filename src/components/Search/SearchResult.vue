@@ -32,9 +32,9 @@ const columns = [
     scopedSlots: { customRender: "name" }
   },
   {
-    title: "分析进度",
-    dataIndex: "progress",
-    key: "progress"
+    title: "注册时间",
+    dataIndex: "time",
+    key: "time"
   },
   {
     title: "状态",
@@ -93,6 +93,14 @@ export default {
       console.log(uuid, op);
       if (op === "delete") {
         this.$store.dispatch("search/deleteTask", uuid);
+      }
+      if (op === "detail") {
+        this.tasks.map(x => {
+          if (x.name === uuid && x.status[0] === "ok") {
+            console.log("inside map uuid:", uuid);
+            window.open("/search/detail?uuid=" + uuid, "_blank");
+          }
+        });
       }
     }
   }

@@ -181,6 +181,9 @@ export default {
     this.searchingTree = true;
     this.$store.dispatch("search/getTree");
     this.$store.dispatch("search/getFund", this.activeAmount);
+    window.setInterval(() => {
+      setTimeout(this.$store.dispatch("search/refreshSearch"), 0);
+    }, 10000);
   },
   components: {
     HotTree,
