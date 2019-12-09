@@ -18,13 +18,15 @@ const router = new Router({
           path: "/search/basic",
           name: "searchPage",
           component: () =>
-            import(/* webpackChunkName: "ipc" */ "./views/Search/Basic")
+            import(/* webpackChunkName: "ipc" */ "./views/Search/Basic"),
+          meta: { requiresAuth: false}
         },
         {
           path: "/search/detail",
           name: "searchDetail",
           component: () =>
-            import(/* webpackChunkName: "ipc" */ "./views/Search/Detail")
+            import(/* webpackChunkName: "ipc" */ "./views/Search/Detail"),
+          meta: { requireAuth: false }
         }
       ]
     },
@@ -45,13 +47,15 @@ const router = new Router({
               path: "/analysis/patent",
               name: "patentAnalysis",
               component: () =>
-                import(/* webpackChunkName: "ipc" */ "./views/Analysis/Patent")
+                import(/* webpackChunkName: "ipc" */ "./views/Analysis/Patent"),
+              meta: { requireAuth: false }
             },
             {
               path: "/analysis/fund",
               name: "fundAnalysis",
               component: () =>
-                import(/* webpackChunkName: "ipc" */ "./views/Analysis/Fund")
+                import(/* webpackChunkName: "ipc" */ "./views/Analysis/Fund"),
+              meta: { requireAuth: false }
             }
           ]
         }
@@ -60,7 +64,8 @@ const router = new Router({
     {
       path: "*",
       name: "404",
-      component: () => import(/* webpackChunkName: "ipc" */ "./views/404")
+      component: () => import(/* webpackChunkName: "ipc" */ "./views/404"),
+      meta: { requireAuth: false }
     }
     // {
     //   path: "/about",
@@ -76,7 +81,27 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   NProgress.start();
-  next();
+  var ca = document.cookie.split(";");
+  console.log("getAuth:", ca);
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i].trim();
+    if (c.indexOf("supreme=") == 0)
+      store.state.userInfo.isSupreme = c.substring(
+        "supreme=".length,
+        c.length
+      );
+  }
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!store.state.userInfo.isSupreme) {
+      next({
+        path: '/'
+      })
+    }else {
+      next();
+    }
+  }else {
+    next()
+  }
 });
 
 router.afterEach(() => {
