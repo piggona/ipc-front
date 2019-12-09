@@ -13,7 +13,8 @@ const state = {
   inventorScatterOption: {},
   inventorScatterOptionMost: {},
   inventorScatterOptionNewer: {},
-  lifeOption: {}
+  lifeOption: {},
+  groupOption: {}
 };
 
 const getters = {};
@@ -96,10 +97,23 @@ const actions = {
       tech,
       isWord
     );
+  },
+  getGroup({ commit }, { tech, isWord }) {
+    patent.getGroupOption(
+      tech => {
+        commit(PATENT.GET_GROUP, tech);
+      },
+      tech,
+      isWord
+    );
   }
 };
 
 const mutations = {
+  [PATENT.GET_GROUP](state,tech) {
+    state.groupOption = tech;
+    console.log("PATENT.GET_GROUP",state.groupOption)
+  },
   [PATENT.GET_KEYWORD](state, key) {
     state.keyword = key;
   },

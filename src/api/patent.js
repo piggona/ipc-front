@@ -743,5 +743,15 @@ export default {
       lifeOption.series.push(lineSeries);
       cb(lifeOption);
     });
+  },
+  getGroupOption(cb, submit_data, isWord) {
+    request({
+      url: "ipd/chart/patent/group/" + submit_data + "/?isWord=" + isWord,
+      method: "get"
+    }).then(response => {
+      let res = response.data.data;
+      console.log("ipd/chart/patent/group/:",res);
+      cb(res)
+    })
   }
 };

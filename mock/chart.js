@@ -1,4 +1,5 @@
 // import random from "lodash/random";
+var fs = require("fs")
 
 var _searchNode = {
   data: [
@@ -307,7 +308,10 @@ function patent(method, param) {
         });
         res = _searchNode;
         // Math.random() > 0.5 ? (res = _searchNode) : (res = []);
-      } else {
+      } else if (param.match("patent/group/") !== null) {
+        let data = fs.readFileSync('/Users/haohao/Downloads/data.txt')
+        res = JSON.parse(data.toString());
+      }else {
         res = null;
       }
       break;

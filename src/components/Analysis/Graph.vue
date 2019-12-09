@@ -87,16 +87,23 @@ export default {
       if (this.link) {
         let l = this.link;
         let op = this.option;
+        let chartname = this.ChartTitle;
         this.chart.on("click", function(params) {
           console.log("Chart Params:", params);
           let name = params.seriesName;
           console.log("renderChart name:", name);
-          op.series.map(x => {
-            if (x.name == name) {
-              window.open(l + x.uuid, "_blank");
-              return;
-            }
-          });
+          if (chartname === "团队关系") {
+            window.open(l + params.data.id, "_blank");
+            return;
+          }else {
+            op.series.map(x => {
+              if (x.name == name) {
+                window.open(l + x.uuid, "_blank");
+                return;
+              }
+            });
+          }
+          
         });
       }
       this.chart.setOption(this.option, true);
