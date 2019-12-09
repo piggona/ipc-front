@@ -17,14 +17,14 @@
           <button class="btn" id="search-btn" @click="getSearch()">搜索</button>
           <div id="search-result"></div>
         </div>
-        <p v-if="searching" style="font-size: 0.5rem">努力搜索中......</p>
-        <p v-if="noResult" class="main-class-phrase">后台正在生成分析报告，请10-20分钟后再次搜索</p>
+        <p v-if="false" style="font-size: 0.5rem">努力搜索中......</p>
+        <p v-if="false" class="main-class-phrase">后台正在生成分析报告，请10-20分钟后再次搜索</p>
         <SearchResult :tasks="tasks" />
-        <div v-if="!noResult" class="list-body" id="list-body-parent">
+        <!-- <div v-if="!noResult" class="list-body" id="list-body-parent">
           <div v-for="node in searchNodes" :key="node.depth">
             <SearchTree :ipc_id="node.ipc_id" :ipc="node.ipc" :depth="node.depth" :des="node.des" />
           </div>
-        </div>
+        </div>-->
       </div>
       <div v-if="noTitleKey === 'fund'" class="fund">
         <div class="search-side row col-md-2" style="padding-top:3rem;">

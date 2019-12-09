@@ -83,7 +83,7 @@ input[type="checkbox"] {
   line-height: 40px;
   vertical-align: middle;
   border: 1px solid #9e9e9e;
-  background: #f5f5f5;
+  /* background: #f5f5f5; */
   font-size: 17px;
   font-weight: bold;
   color: #455a64;
@@ -96,7 +96,7 @@ input[type="checkbox"] {
   line-height: 25px;
   font-size: 12px;
   padding: 0 10px;
-  background: #f5f5f5;
+  /* background: #f5f5f5; */
 }
 /* 加载 */
 .loading {
