@@ -43,6 +43,7 @@
       />
       <!-- :most="InventorScatterOptionMost"
       :newer="InventorScatterOptionNewer"-->
+      <Chart :ChartTitle="'团队关系'" :ChartStyle="'width:100%;height:400px;align-content:center;'" :option="GroupOption" :link="baseUrl+'documents/static/#/analysis/patent?patent_uuid='"/>
     </div>
   </div>
 </template>
@@ -95,7 +96,8 @@ export default {
         state.patent.inventorScatterOptionMost,
       InventorScatterOptionNewer: state =>
         state.patent.inventorScatterOptionNewer,
-      LifeOption: state => state.patent.lifeOption
+      LifeOption: state => state.patent.lifeOption,
+      GroupOption: state => state.patent.groupOption
     }),
     title() {
       return this.$route.query.tech;
@@ -133,6 +135,7 @@ export default {
     this.$store.dispatch("patent/getAssignee", { tech, isWord });
     this.$store.dispatch("patent/getInventor", { tech, isWord });
     this.$store.dispatch("patent/getLife", { tech, isWord });
+    this.$store.dispatch("patent/getGroup", { tech, isWord })
     console.log("位置：Patent mounted");
     console.log(tech);
     console.log(isWord);
