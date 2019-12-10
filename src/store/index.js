@@ -9,8 +9,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     userInfo: {
-      username: "User Not Found"
-    }
+      username: "User Not Found",
+      userrole: ""
+    },
   },
   mutations: {
     getUsername() {
@@ -21,6 +22,20 @@ export default new Vuex.Store({
         if (c.indexOf("patent_username=") == 0)
           this.state.userInfo.username = c.substring(
             "patent_username=".length,
+            c.length
+          );
+      }
+    },
+    getUserRole() {
+      console.log("into getUserRole!")
+      var ca = document.cookie.split(";");
+      console.log("getAuth:", ca);
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf("userrole=") == 0)
+          console.log("set state.userInfo.userrole")
+          this.state.userInfo.userrole = c.substring(
+            "userrole=".length,
             c.length
           );
       }

@@ -154,5 +154,20 @@ export default {
       let res = response.data;
       cb(res.data);
     });
+  },
+  getAdmin(cb) {
+    request({
+      url: "ipd/chart/patent/showuser/",
+      method: "get"
+    }).then(response => {
+      let res = response.data;
+      console.log("api get admin:",res)
+      res.data.map((x,idx) => {
+        x.rank = idx
+      })
+      console.log("api get admin2:",res.data)
+
+      cb(res.data);
+    });
   }
 };

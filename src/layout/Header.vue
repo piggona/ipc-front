@@ -42,6 +42,7 @@ export default {
   // },
   mounted() {
     this.$store.commit("getUsername");
+    this.$store.commit("getUserRole");
   }
 };
 </script>

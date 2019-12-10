@@ -43,7 +43,7 @@
       />
       <!-- :most="InventorScatterOptionMost"
       :newer="InventorScatterOptionNewer"-->
-      <Chart :ChartTitle="'团队关系'" :ChartStyle="'width:100%;height:400px;align-content:center;'" :option="GroupOption" :link="baseUrl+'documents/static/#/analysis/patent?patent_uuid='"/>
+      <Chart :ChartTitle="'团队关系'" :ChartStyle="'width:100%;height:400px;align-content:center;'" :option="GroupOption" :link="baseUrl+'documents/static/#/analysis/person?inventor='"/>
     </div>
   </div>
 </template>

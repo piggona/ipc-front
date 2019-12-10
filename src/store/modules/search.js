@@ -16,7 +16,8 @@ const state = {
       { op: "detail", uuid: "" },
       { op: "delete", uuid: "" }
     ]
-  }
+  },
+  admin: {}
 };
 
 const getters = {};
@@ -64,12 +65,23 @@ const actions = {
       uuid
     );
   },
+  getAdmin({commit}) {
+    search.getAdmin(
+      result => {
+        commit(SEARCH.GET_ADMIN,result);
+      }
+    );
+  },
   deleteTask({ commit }, uuid) {
     commit(SEARCH.DELETE_TASK, uuid);
   }
 };
 
 const mutations = {
+  [SEARCH.GET_ADMIN](state, result) {
+    state.admin = result;
+    console.log("SEARCH.GET_ADMIN:",state.admin)
+  },
   [SEARCH.GET_IPC_TREE](state, tree) {
     state.treeNodes = tree;
   },

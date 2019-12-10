@@ -21,7 +21,8 @@ export const PATENT = {
   GET_INVENTOR_NEWER: "getInventorNewer",
   GET_LIFE: "getLife",
   GET_KEYWORD: "getKeyword",
-  GET_GROUP: "getGroup"
+  GET_GROUP: "getGroup",
+  GET_ADMIN: "getAdmin"
 };
 
 export const FUND = {

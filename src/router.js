@@ -81,27 +81,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   NProgress.start();
-  var ca = document.cookie.split(";");
-  console.log("getAuth:", ca);
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i].trim();
-    if (c.indexOf("supreme=") == 0)
-      store.state.userInfo.isSupreme = c.substring(
-        "supreme=".length,
-        c.length
-      );
-  }
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.state.userInfo.isSupreme) {
-      next({
-        path: '/'
-      })
-    }else {
-      next();
-    }
-  }else {
-    next()
-  }
+  next();
 });
 
 router.afterEach(() => {

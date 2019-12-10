@@ -78,6 +78,10 @@
           </div>
         </div>
       </div>
+      <div v-if="noTitleKey === 'admin'" class="admin">
+        <a-table :columns="columns" :dataSource="admin" style="width: 100%">
+        </a-table>
+      </div>
     </a-card>
   </div>
 </template>
@@ -88,6 +92,30 @@ import SearchTree from "./SearchTree";
 import FundResult from "./FundResult";
 import SearchResult from "./SearchResult";
 import { mapState } from "vuex";
+
+const columns = [
+  {
+    title: "#",
+    dataIndex: "rank",
+    key: "rank"
+  },
+  {
+    title: "用户名",
+    dataIndex: "username",
+    key: "username"
+  },
+  {
+    title: "最后登录时间",
+    dataIndex: "lastlogin",
+    key: "lastlogin"
+  },
+  {
+    title: "登录次数",
+    dataIndex: "loginnums",
+    key: "loginnums"
+  }
+];
+
 export default {
   data() {
     return {
@@ -112,7 +140,8 @@ export default {
       searchingFund: false,
       searchingTree: false,
       noResult: false,
-      noResultFund: false
+      noResultFund: false,
+      columns: columns,
     };
   },
   methods: {
@@ -144,7 +173,9 @@ export default {
       treeNodes: state => state.search.treeNodes,
       searchNodes: state => state.search.searchNodes,
       fund: state => state.search.fund,
-      tasks: state => state.search.status
+      tasks: state => state.search.status,
+      userRole: state => state.userInfo.userrole,
+      admin: state => state.search.admin
     })
   },
   watch: {
@@ -181,6 +212,14 @@ export default {
     this.searchingTree = true;
     this.$store.dispatch("search/getTree");
     this.$store.dispatch("search/getFund", this.activeAmount);
+    console.log("what is userrole:",this.userRole)
+    if(this.userRole === "1") {
+      this.tabListNoTitle.push({
+        key: "admin",
+        tab: "管理员"
+      });
+      this.$store.dispatch("search/getAdmin")
+    }
     window.setInterval(() => {
       setTimeout(this.$store.dispatch("search/refreshSearch"), 0);
     }, 10000);
